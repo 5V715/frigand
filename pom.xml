@@ -106,7 +106,7 @@
                                 <os>linux</os>
                             </platform>
                         </platforms>
-                    <from>
+                    </from>
                     <to>
                         <image>ghcr.io/5v715/frigand</image>
                     </to>
