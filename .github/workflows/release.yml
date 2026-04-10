@@ -13,8 +13,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: 'prepare gradle'
-        uses: gradle/gradle-build-action@v2
       - id: get-version
         run: |
           echo "version=$(echo $(basename ${{github.ref}}))" >> $GITHUB_OUTPUT
@@ -22,6 +20,6 @@ jobs:
         shell: bash
         run: |
           mvn versions:set -DnewVersion=${{ steps.get-version.outputs.version }}
-          mvn build \
+          mvn install \
           -Djib.to.auth.username=${{ github.actor }} \
           -Djib.to.auth.password=${{ secrets.REPO_TOKEN }}
