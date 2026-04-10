@@ -20,6 +20,6 @@ jobs:
         shell: bash
         run: |
           mvn versions:set -DnewVersion=${{ steps.get-version.outputs.version }}
-          mvn compile jib:dockerBuild \
+          mvn compile com.google.cloud.tools:jib-maven-plugin:3.5.1:build \
           -Djib.to.auth.username=${{ github.actor }} \
           -Djib.to.auth.password=${{ secrets.REPO_TOKEN }}
