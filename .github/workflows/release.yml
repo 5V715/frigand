@@ -20,6 +20,6 @@ jobs:
         shell: bash
         run: |
           mvn versions:set -DnewVersion=${{ steps.get-version.outputs.version }}
-          mvn install \
+          mvn compile jib:dockerBuild \
           -Djib.to.auth.username=${{ github.actor }} \
           -Djib.to.auth.password=${{ secrets.REPO_TOKEN }}
